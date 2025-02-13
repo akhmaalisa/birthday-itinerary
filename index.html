@@ -10,9 +10,9 @@
             margin: 20px;
             padding: 20px;
             background-color: #f0f8ff;
+            text-align: center;
         }
         h2 {
-            text-align: center;
             color: #ff6f61;
         }
         .container {
@@ -23,19 +23,6 @@
             border-radius: 15px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
         }
-        input, button {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 2px solid #ff6f61;
-            border-radius: 10px;
-        }
-        button {
-            background: #ffb400;
-            color: white;
-            cursor: pointer;
-            font-weight: bold;
-        }
         ul {
             list-style: none;
             padding: 0;
@@ -45,29 +32,57 @@
             margin: 5px 0;
             padding: 10px;
             border-radius: 10px;
-            display: flex;
-            justify-content: space-between;
             font-weight: bold;
         }
-        .delete {
-            background: #ff6f61;
+        .page {
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+        .btn {
+            background: #ffb400;
             color: white;
-            border: none;
             cursor: pointer;
-            padding: 5px 10px;
+            font-weight: bold;
+            padding: 10px;
+            margin-top: 20px;
+            border: none;
             border-radius: 10px;
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
+    <div id="page1" class="container page active">
+        <h2>🎈 Welcome! 🎈</h2>
+        <p>Here's the itinerary for our special day! Hope you're excited. 💕</p>
+        <button class="btn" onclick="nextPage()">View Itinerary</button>
+    </div>
+    
+    <div id="page2" class="container page">
         <h2>🎉 Birthday Itinerary 🎂</h2>
-        <ul id="itinerary-list">
+        <ul>
             <li>9 AM - Going to theme park (Gamuda)</li>
             <li>1 PM - Lunch (Nearest Tamarind Square)</li>
-            <li>4/5 PM - Cafe Hopping (Nearest Bukit Antarabangsa)</li>
+            <li>4/5 PM - Cafe Hopping</li>
             <li>7/8 PM - Movie Date</li>
         </ul>
+        <button class="btn" onclick="nextPage()">Next</button>
     </div>
+    
+    <div id="page3" class="container page">
+        <h2>💖 Can't Wait to See You! 💖</h2>
+        <p>Looking forward to making amazing memories with you! 🥰</p>
+    </div>
+
+    <script>
+        let currentPage = 1;
+        function nextPage() {
+            document.getElementById(`page${currentPage}`).classList.remove('active');
+            currentPage++;
+            document.getElementById(`page${currentPage}`).classList.add('active');
+        }
+    </script>
 </body>
 </html>
