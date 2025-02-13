@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Itinerary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h2 {
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background: #28a745;
+            color: white;
+            cursor: pointer;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            background: #ddd;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .delete {
+            background: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Birthday Itinerary</h2>
+        <input type="text" id="time" placeholder="Time (e.g., 10:00 AM)">
+        <input type="text" id="activity" placeholder="Activity">
+        <input type="text" id="location" placeholder="Location">
+        <button onclick="addItinerary()">Add Itinerary</button>
+        <ul id="itinerary-list"></ul>
+    </div>
+
+    <script>
+        function addItinerary() {
+            let time = document.getElementById('time').value;
+            let activity = document.getElementById('activity').value;
+            let location = document.getElementById('location').value;
+
+            if (time && activity && location) {
+                let li = document.createElement('li');
+                li.innerHTML = `${time} - ${activity} at ${location} <button class='delete' onclick='removeItinerary(this)'>X</button>`;
+                document.getElementById('itinerary-list').appendChild(li);
+
+                document.getElementById('time').value = '';
+                document.getElementById('activity').value = '';
+                document.getElementById('location').value = '';
+            }
+        }
+
+        function removeItinerary(element) {
+            element.parentElement.remove();
+        }
+    </script>
+</body>
+</html>
