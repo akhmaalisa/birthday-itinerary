@@ -62,33 +62,12 @@
 <body>
     <div class="container">
         <h2>🎉 Birthday Itinerary 🎂</h2>
-        <input type="text" id="time" placeholder="Time (e.g., 10:00 AM)">
-        <input type="text" id="activity" placeholder="Activity">
-        <input type="text" id="location" placeholder="Location">
-        <button onclick="addItinerary()">Add Itinerary</button>
-        <ul id="itinerary-list"></ul>
+        <ul id="itinerary-list">
+            <li>9 AM - Going to theme park (Gamuda)</li>
+            <li>1 PM - Lunch (Nearest Tamarind Square)</li>
+            <li>4/5 PM - Cafe Hopping (Nearest Bukit Antarabangsa)</li>
+            <li>7/8 PM - Movie Date</li>
+        </ul>
     </div>
-
-    <script>
-        function addItinerary() {
-            let time = document.getElementById('time').value;
-            let activity = document.getElementById('activity').value;
-            let location = document.getElementById('location').value;
-
-            if (time && activity && location) {
-                let li = document.createElement('li');
-                li.innerHTML = `${time} - ${activity} at ${location} <button class='delete' onclick='removeItinerary(this)'>X</button>`;
-                document.getElementById('itinerary-list').appendChild(li);
-
-                document.getElementById('time').value = '';
-                document.getElementById('activity').value = '';
-                document.getElementById('location').value = '';
-            }
-        }
-
-        function removeItinerary(element) {
-            element.parentElement.remove();
-        }
-    </script>
 </body>
 </html>
